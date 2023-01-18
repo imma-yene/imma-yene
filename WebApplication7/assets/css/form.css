@@ -1,0 +1,29 @@
+﻿.cover {
+    width: 250px;
+    height: 470px;
+    background-color: white;
+    margin-left: 250px;
+    margin-top: 50px;
+}
+
+#formgroup {
+    margin-left: 18px;
+    margin-top: 0px;
+}
+
+text {
+    margin-left: 30px;
+    font-size: 12px;
+}
+
+#developerform {
+    margin-top: 0px;
+}
+
+.del {
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    margin-left: 250px;
+    margin-top: 50px;
+}

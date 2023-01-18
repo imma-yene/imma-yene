@@ -1,0 +1,84 @@
+﻿@model WebApplication7.Models.User
+
+@{
+    ViewBag.title = "Edit";
+    
+;
+}
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+<div class="cover border border-dark p-2 mb-2">
+    <div class="form-horizontal">
+        <div>
+            <h5 style="margin-left:50px"> activate user  </h5>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+
+
+        <div class="form-group">
+            <text> Email:</text>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <text> Password: </text>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <text> Role: </text>
+            <div class="col-md-10">
+
+                @Html.DropDownList("Role", new List<SelectListItem>
+       { new SelectListItem {Text= Model.role, Selected=true },
+             new SelectListItem  {Text="advisor", Value="advisor" },
+            new SelectListItem {Text="developer", Value="developer" },
+             new SelectListItem {Text="manager", Value="manager" }
+              } )
+
+
+                @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="yourPassword" class="form-label">profile</label>
+            @Html.EditorFor(model => model.profile, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            <div class="text-danger">@Html.ValidationMessageFor(Model => Model.profile)  </div>
+            <div class="invalid-feedback">please select profile !</div>
+        </div>
+
+        <div class="form-group">
+            <text>status: </text>
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+    </div>
+    }
+
+
+

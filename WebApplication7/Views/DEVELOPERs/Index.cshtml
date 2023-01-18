@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication7.Models.DEVELOPER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<center style="margin-top:10px">Developer list</center>
+<p>
+    @Html.ActionLink("Regester New", "Create")
+</p>
+<table class="table table-striped border border-success" style="width:95%; margin-left:15px">
+    <tr>
+        <th>
+            First Name:
+        </th>
+        <th>
+            Last Name:
+        </th>
+        <th>
+            phone Number:
+        </th>
+        <th>
+            Email:
+
+        </th>
+        <th>
+            Project Title:
+
+        </th>
+        <th>
+            Advisor Name:
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHONE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADVISOR.AFNAME)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

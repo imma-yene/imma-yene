@@ -1,0 +1,57 @@
+﻿@model WebApplication7.Models.ADVISOR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div class="del border border-success">
+      <div>
+         <h6> detail :</h6>
+      </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            First Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFNAME)
+        </dd>
+        <dt>Id no</dt>
+        <dd>
+            @Html.DisplayFor(model => model.AID)
+        </dd>
+
+        <dt>
+            Last Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ALNAME)
+        </dd>
+
+        <dt>
+            Phone Number:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+    </dl>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

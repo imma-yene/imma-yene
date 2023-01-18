@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication7.Models.ADVISOR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<center style="margin-top:10px">Advisor list</center>
+<p >
+    @Html.ActionLink("Regester New", "Create")
+</p>
+<table class="table table-striped border border-success" style="width:95%; margin-left:15px">
+    <tr>
+
+        <th>
+            First Name:
+        </th>
+        <th>
+            Last Name:
+        </th>
+        <th>
+            phone Number:
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AFNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ALNAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHONE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AID })
+            </td>
+        </tr>
+    }
+
+</table>

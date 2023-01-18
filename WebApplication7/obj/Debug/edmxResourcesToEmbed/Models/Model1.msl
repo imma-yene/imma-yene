@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="firstModelStoreContainer" CdmEntityContainer="firstEntities">
+    <EntitySetMapping Name="ADVISORs">
+      <EntityTypeMapping TypeName="firstModel.ADVISOR">
+        <MappingFragment StoreEntitySet="ADVISOR">
+          <ScalarProperty Name="AID" ColumnName="AID" />
+          <ScalarProperty Name="AFNAME" ColumnName="AFNAME" />
+          <ScalarProperty Name="ALNAME" ColumnName="ALNAME" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEVELOPERs">
+      <EntityTypeMapping TypeName="firstModel.DEVELOPER">
+        <MappingFragment StoreEntitySet="DEVELOPER">
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AID" ColumnName="AID" />
+          <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+          <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="firstModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+          <ScalarProperty Name="Pro_Date" ColumnName="Pro_Date" />
+          <ScalarProperty Name="describtion" ColumnName="describtion" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="firstModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="profile" ColumnName="profile" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

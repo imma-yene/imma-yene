@@ -1,0 +1,68 @@
+﻿@model WebApplication7.Models.ADVISOR
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="cover border border-success p-2 mb-2">
+    <div class="form-horizontal">
+        <div>
+            <h5 style="margin-left:50px"> update advisor info </h5>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AID)
+           first name:
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AFNAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AFNAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+          last name:
+        <div class="form-group">
+         
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ALNAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ALNAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        phone number:
+        <div class="form-group">
+          
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Email:
+        <div class="form-group">
+           
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control",Type="email" } )
+                @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

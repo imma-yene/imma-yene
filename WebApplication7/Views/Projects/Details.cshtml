@@ -1,0 +1,55 @@
+﻿@model WebApplication7.Models.Project
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Project</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.describtion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.describtion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pro_Date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pro_Date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.deadline)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.deadline)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.pid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

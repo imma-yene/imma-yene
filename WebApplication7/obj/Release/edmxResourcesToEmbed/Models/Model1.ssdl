@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="firstModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADVISOR">
+    <Key>
+      <PropertyRef Name="AID" />
+    </Key>
+    <Property Name="AID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AFNAME" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ALNAME" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="PHONE" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEVELOPER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AID" Type="int" Nullable="false" />
+    <Property Name="FNAME" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="LNAME" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="PHONE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="describtion" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Pro_Date" Type="datetime" Nullable="false" />
+    <Property Name="deadline" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DEVELOPER_ADVISOR">
+    <End Role="ADVISOR" Type="Self.ADVISOR" Multiplicity="1" />
+    <End Role="DEVELOPER" Type="Self.DEVELOPER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADVISOR">
+        <PropertyRef Name="AID" />
+      </Principal>
+      <Dependent Role="DEVELOPER">
+        <PropertyRef Name="AID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DEVELOPER_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="DEVELOPER" Type="Self.DEVELOPER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="DEVELOPER">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="firstModelStoreContainer">
+    <EntitySet Name="ADVISOR" EntityType="Self.ADVISOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEVELOPER" EntityType="Self.DEVELOPER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DEVELOPER_ADVISOR" Association="Self.FK_DEVELOPER_ADVISOR">
+      <End Role="ADVISOR" EntitySet="ADVISOR" />
+      <End Role="DEVELOPER" EntitySet="DEVELOPER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DEVELOPER_Project" Association="Self.FK_DEVELOPER_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="DEVELOPER" EntitySet="DEVELOPER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

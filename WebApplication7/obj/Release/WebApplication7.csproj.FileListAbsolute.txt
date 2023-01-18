@@ -1,0 +1,2 @@
+C:\Users\Mehbuba.Abera\source\repos\WebApplication7\WebApplication7\obj\Release\WebApplication7.csproj.AssemblyReference.cache
+C:\Users\Mehbuba.Abera\source\repos\WebApplication7\WebApplication7\obj\Release\WebApplication7.csproj.CoreCompileInputs.cache

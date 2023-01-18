@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebApplication7.Models.User>
+
+@{
+    ViewBag.Title = "Activate";
+}
+
+
+
+
+<center style="margin-top:10px">activated user list</center>
+
+<table class="table table-striped border border-dark" style="width:95%; margin-left:15px">
+    <tr>
+
+        <th>
+            Email
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            status
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.ActionLink("Deactivate", "Edit", new { id = item.id }) |
+
+            </td>
+        </tr>
+    }
+
+</table>
+

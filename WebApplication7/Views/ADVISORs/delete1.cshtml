@@ -1,0 +1,44 @@
+﻿@model WebApplication7.Models.ADVISOR
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+    <div class="del border border-success">
+        <div class="form-horizontal">
+           
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                   <text>Enter Id Number</text>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.AID,  new { @class = "form-control"  })
+                    @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+        
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        </div>
+            }
+</body>
+</html>

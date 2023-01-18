@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication7.Models.Project>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.describtion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pro_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deadline)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.describtion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pro_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deadline)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.pid }) |
+                @Html.ActionLink("Details", "Details", new { id=item.pid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.pid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

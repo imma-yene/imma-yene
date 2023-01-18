@@ -1,0 +1,67 @@
+﻿@model WebApplication7.Models.DEVELOPER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="del border border-success">
+    <div>
+        <h6> detail :</h6>
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            first name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FNAME)
+        </dd>
+
+        <dt>
+            last name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LNAME)
+        </dd>
+
+        <dt>
+            phone number:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE)
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            Project Title:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Title)
+        </dd>
+
+        <dt>
+            Advisor Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADVISOR.AFNAME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

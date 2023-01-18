@@ -1,0 +1,49 @@
+﻿@model WebApplication7.Models.User
+
+
+    <div class="del border border-success">
+        <div>
+            <h6> detail :</h6>
+        </div>
+        <hr />
+     
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.role)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.role)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.profile)
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(Model.profile)" alt="" width="50" height="50" />
+
+            </dd>
+            
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+

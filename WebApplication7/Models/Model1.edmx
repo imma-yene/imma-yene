@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="firstModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADVISOR">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AFNAME" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="ALNAME" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="PHONE" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DEVELOPER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AID" Type="int" Nullable="false" />
+          <Property Name="FNAME" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="LNAME" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="PHONE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="describtion" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Pro_Date" Type="datetime" Nullable="false" />
+          <Property Name="deadline" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="profile" Type="varchar(max)" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DEVELOPER_ADVISOR">
+          <End Role="ADVISOR" Type="Self.ADVISOR" Multiplicity="1" />
+          <End Role="DEVELOPER" Type="Self.DEVELOPER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADVISOR">
+              <PropertyRef Name="AID" />
+            </Principal>
+            <Dependent Role="DEVELOPER">
+              <PropertyRef Name="AID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEVELOPER_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="DEVELOPER" Type="Self.DEVELOPER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="DEVELOPER">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="firstModelStoreContainer">
+          <EntitySet Name="ADVISOR" EntityType="Self.ADVISOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEVELOPER" EntityType="Self.DEVELOPER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DEVELOPER_ADVISOR" Association="Self.FK_DEVELOPER_ADVISOR">
+            <End Role="ADVISOR" EntitySet="ADVISOR" />
+            <End Role="DEVELOPER" EntitySet="DEVELOPER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEVELOPER_Project" Association="Self.FK_DEVELOPER_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="DEVELOPER" EntitySet="DEVELOPER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="firstModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADVISOR">
+          <Key>
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="AID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AFNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ALNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PHONE" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DEVELOPERs" Relationship="Self.FK_DEVELOPER_ADVISOR" FromRole="ADVISOR" ToRole="DEVELOPER" />
+        </EntityType>
+        <EntityType Name="DEVELOPER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AID" Type="Int32" Nullable="false" />
+          <Property Name="FNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ADVISOR" Relationship="Self.FK_DEVELOPER_ADVISOR" FromRole="DEVELOPER" ToRole="ADVISOR" />
+          <Property Name="pid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="firstModel.FK_DEVELOPER_Project" FromRole="DEVELOPER" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_DEVELOPER_ADVISOR">
+          <End Role="ADVISOR" Type="Self.ADVISOR" Multiplicity="1" />
+          <End Role="DEVELOPER" Type="Self.DEVELOPER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADVISOR">
+              <PropertyRef Name="AID" />
+            </Principal>
+            <Dependent Role="DEVELOPER">
+              <PropertyRef Name="AID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="firstEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADVISORs" EntityType="Self.ADVISOR" />
+          <EntitySet Name="DEVELOPERs" EntityType="Self.DEVELOPER" />
+          <AssociationSet Name="FK_DEVELOPER_ADVISOR" Association="Self.FK_DEVELOPER_ADVISOR">
+            <End Role="ADVISOR" EntitySet="ADVISORs" />
+            <End Role="DEVELOPER" EntitySet="DEVELOPERs" />
+          </AssociationSet>
+          <EntitySet Name="Projects" EntityType="firstModel.Project" />
+          <AssociationSet Name="FK_DEVELOPER_Project" Association="firstModel.FK_DEVELOPER_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="DEVELOPER" EntitySet="DEVELOPERs" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="firstModel.User" />
+        </EntityContainer>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="describtion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Pro_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="deadline" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DEVELOPERs" Relationship="firstModel.FK_DEVELOPER_Project" FromRole="Project" ToRole="DEVELOPER" />
+        </EntityType>
+        <Association Name="FK_DEVELOPER_Project">
+          <End Type="firstModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="firstModel.DEVELOPER" Role="DEVELOPER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="DEVELOPER">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="profile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="firstModelStoreContainer" CdmEntityContainer="firstEntities">
+          <EntitySetMapping Name="ADVISORs">
+            <EntityTypeMapping TypeName="firstModel.ADVISOR">
+              <MappingFragment StoreEntitySet="ADVISOR">
+                <ScalarProperty Name="AID" ColumnName="AID" />
+                <ScalarProperty Name="AFNAME" ColumnName="AFNAME" />
+                <ScalarProperty Name="ALNAME" ColumnName="ALNAME" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEVELOPERs">
+            <EntityTypeMapping TypeName="firstModel.DEVELOPER">
+              <MappingFragment StoreEntitySet="DEVELOPER">
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AID" ColumnName="AID" />
+                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="LNAME" ColumnName="LNAME" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="firstModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="Pro_Date" ColumnName="Pro_Date" />
+                <ScalarProperty Name="describtion" ColumnName="describtion" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="firstModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="profile" ColumnName="profile" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
