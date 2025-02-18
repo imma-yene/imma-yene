@@ -31,11 +31,11 @@ I am a **Seasoned Senior Software Developer** with over **three years of profess
 | ASP.NET MVC    | ReactJS    |             |               |           |                   |                  |
 
 ## 📈 My GitHub Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=imma-yene&show_icons=true&theme=radical)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=imma-yene&show_icons=true&theme=radical&count_private=true)
 
 ## 📫 Get in Touch
-- 📧 Email: your.mehbubazed@gmail.com
-- 💼 LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/mehbubazed/)
-- 🌐 Portfolio: [Your Portfolio URL](https://mehbuba.onrender.com)
+- 📧 Email:mehbubazed@gmail.com
+- 💼 LinkedIn: (https://www.linkedin.com/in/mehbubazed/)
+- 🌐 Portfolio: (https://mehbuba.onrender.com)
 
 Let's build something amazing together! 🚀
